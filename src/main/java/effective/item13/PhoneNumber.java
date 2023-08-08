@@ -1,12 +1,8 @@
 package effective.item13;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@Setter
-@Getter
 public final class PhoneNumber implements Cloneable
 {
     private int areaCode, profix, lineNumber;
