@@ -1,9 +1,12 @@
 package effective.item13;
 
+import lombok.ToString;
+
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-class Stack {
+@ToString
+class Stack implements Cloneable{
     private Object[] elements;
     private int size = 0;
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
@@ -31,5 +34,12 @@ class Stack {
         if (elements.length == size) {
             elements = Arrays.copyOf(elements, 2 * size + 1);
         }
+    }
+
+    @Override
+    public Stack clone() throws CloneNotSupportedException {
+        Stack clonedStack = (Stack) super.clone();
+        //clonedStack.elements = this.elements.clone();
+        return clonedStack;
     }
 }
