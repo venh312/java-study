@@ -14,8 +14,8 @@
 
 ### Comparable 인터페이스의 compareTo 메서드
 - compareTo 는 해당 객체와 전달된 객체의 순서를 비교한다.
-- compareTo는 Object의 euqals와 두가지 차이점이 있다. compareTo는 equals와 달리 단순 동치성에 더해 순서까지 비교할 수 있으며, 제네릭하다.
-- Comparable을 구현했다는 것은 그 클래스의 인스턴스에 자연적인 순서가 있음을 뜻한다. 예를 들어, Comparable을 구현한 객체들의 배열은 Arrays.sort(a)로 쉽게 정렬이 가능하다.
+- compareTo는 Object의 euqals와 두가지 차이점이 있다. `compareTo는 equals와 달리 단순 동치성에 더해 순서까지 비교할 수 있으며, 제네릭하다.`
+- Comparable을 구현했다는 것은 그 클래스의 인스턴스에 자연적인 순서가 있음을 뜻한다. 예를 들어, `Comparable을 구현한 객체들의 배열은 Arrays.sort(a)로 쉽게 정렬이 가능`하다.
 
 ### compareTo 메서드 일반규약
 - 이 객체와 주어진 객체의 순서를 비교한다. 객체가 주어진 객체보다 `작으면 음의정수`를 `같으면 0`을, `크면 양의 정수`를 반환한다. 비교할 수 없는 타입이 주어지면 `ClassCastException`을 던진다.
@@ -26,15 +26,16 @@
 
 ### 추이성
 - 첫 번째가 두번째보다 크고 두 번째가 세번째보다 크면 첫번째는 세번째보다 커야한다.
-- Comparable을 구현한 클래스는 추이성을 보장해야 한다. 즉, (x.compareTo(y)>0 && y.compareTo(z) > 0)이면 x.compareTo(z) > 0 이다.
+- Comparable을 구현한 클래스는 추이성을 보장해야 한다. `(x.compareTo(y)>0 && y.compareTo(z) > 0)이면 x.compareTo(z) > 0` 이다.
 
 ### 반사성
 - 크기가 같은 객체들끼리는 어떤 객체와 비교하더라도 항상 같다.
 - Comparable을 구현한 클래스는 모든 z에 대해 x.compareTo(y) == 0이면 sgn(x.compareTo(z)) == sgn(y.compareTo(z))이다.
 
 ### equals
-- compareTo 메서드로 수행한 동치성테스트 결과가 equals와 같아야 한다.
-- (x.compareTo(y) == 0) == (x.equals(y))여야 한다. Comparable을 구현하고 이 권고를 지키지 않는 모든 클래스는 그 사실을 명시해야 한다. (주의: 이 클래스의 순서는 equals 메서드와 일관되지 않다.)
+- compareTo 메서드로 수행한 동치성 테스트 결과가 `equals와 같아야 한다.`
+- `(x.compareTo(y) == 0) == (x.equals(y))`여야 한다.
+- Comparable을 구현하고 이 권고를 지키지 않는 모든 클래스는 그 사실을 명시해야 한다. `※ 주의: 이 클래스의 순서는 equals 메서드와 일관되지 않다.`
 
 
 
