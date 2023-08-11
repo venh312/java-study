@@ -2,11 +2,11 @@
 
 ### Comparable 인터페이스란?
 - Comparable 인터페이스는 객체를 정렬하는데 사용되는 메서드인 compareTo를 정의하고 있다.
-- Comparable 인터페이스를 구현한 클래스는 반드시 compareTo를 정의해야 한다.
+- Comparable 인터페이스를 구현한 클래스는 `반드시 compareTo를 정의`해야 한다.
 
 ### Comparable 인터페이스 특징
 - 자바에서 같은 타입의 인스턴스를 비교해야만 하는 클래스들은 모두 Comparable 인터페이스를 구현하고 있다.
-- Boolean 타입을 제외한 래퍼 클래스와 알파벳, 연대같이 순서가 명확한 클래스들은 모두 정렬이 가능하다.
+- Boolean 타입을 제외한 [래퍼 클래스](https://github.com/conf312/concept-description/blob/master/Java/%EB%9E%98%ED%8D%BC%ED%81%B4%EB%9E%98%EC%8A%A4.md)와 알파벳, 연대같이 순서가 명확한 클래스들은 모두 정렬이 가능하다.
 - 기본 정렬 순서는 작은 값에서 큰 값으로 정렬되는 오름차순이다.
 
 ### Comparable 인터페이스 구현
