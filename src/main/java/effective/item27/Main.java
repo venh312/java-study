@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Main {
+    //@SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // unchecked or unsafe operations. 발생
         // javac 명령줄 인수에 -Xlint:unchecked 추가 권고
