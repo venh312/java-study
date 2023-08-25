@@ -32,7 +32,7 @@ for (Iterator i = stamps.iterator(); i.hashNext();) {
     stamp.cancel();
 }
 ```
-사용하려는 시점에서 오류가 발생하면 문제를 겪는 코등롸 원인을 제공한 코드가 물리적으로 떨어져 있을 가능성이 커진다.
+사용하려는 시점에서 오류가 발생하면 문제를 겪는 코드와 원인을 제공한 코드가 물리적으로 떨어져 있을 가능성이 커진다.
 해당 문제의 지점을 찾기 위해 전체를 훑어봐야 할 수도 있다.
 
 ### 매개변수된 컬렉션 타입 - 타입 안전성 확보
@@ -40,7 +40,7 @@ for (Iterator i = stamps.iterator(); i.hashNext();) {
 ```java
 private final Collection<Stamp> stamps = ...;
 
-// 이제 stamps에 엉뚱한 타입의 인스턴스를 넣으려 하면 컴파일 오류가 발생하며 무엇이 잘못됐는지를 정확히 알려준다.
+// 이제 stamps에 엉뚱한 타입의 인스턴스를 넣으려 하면 컴파일 오류가 발생하며 무엇이 잘못 됐는지를 정확히 알려준다.
 // incompatible types: Coin cannot be converted
 stamps.add(new Coint());
 ```
@@ -62,7 +62,6 @@ List<?>
 ```java
 List<? extends Number>
 ```
-
 
 ### 정리
 - 로 타입을 사용하면 런타임 예외가 일어날 수 있으니 사용하면 안된다.
