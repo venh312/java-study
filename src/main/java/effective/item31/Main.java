@@ -28,8 +28,5 @@ public class Main {
 
         // E의 상위 타입의 Collection 이어야 한다.(모든 타입은 자기 자신의 상위 타입이다.)
 //        stackGeneric.popAllCollectionSuper(objects);
-
-
-        
     }
 }
