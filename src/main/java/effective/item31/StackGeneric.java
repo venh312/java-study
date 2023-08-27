@@ -3,6 +3,7 @@ package effective.item31;
 import lombok.ToString;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EmptyStackException;
 
 @ToString
@@ -50,5 +51,15 @@ class StackGeneric<E> {
     public void pushAllWildcard(Iterable<? extends E> src) {
         for (E e : src)
             push(e);
+    }
+
+    public void popAllCollection(Collection<E> dst) {
+        while (!isEmpty())
+            dst.add(pop());
+    }
+
+    public void popAllCollectionSuper(Collection<? super E> dst) {
+        while (!isEmpty())
+            dst.add(pop());
     }
 }
