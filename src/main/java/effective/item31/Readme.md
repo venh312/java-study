@@ -27,6 +27,9 @@ public static <E> void swap(List<E> list, int i, int j);
 public static void swap(List<?> list, int i, int j);
 ```
 
+### 반환 타입에는 한정적 와일드카드 타입을 사용하면 안된다.
+클라이언트 코드에서도 와일드카드 타입을 써야하기 때문이다.
+
 ### 정리
 - 와일드카드 타입을 적용하면 API가 훨씬 유연해진다.
 - 널리 쓰일 라이브러리를 작성한다면 반드시 와일드카드 타입을 적절히 사용해줘야 한다.
