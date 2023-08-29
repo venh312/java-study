@@ -53,12 +53,12 @@ class StackGeneric<E> {
             push(e);
     }
 
-    public void popAllCollection(Collection<E> dst) {
+    public void popAll(Collection<E> dst) {
         while (!isEmpty())
             dst.add(pop());
     }
 
-    public void popAllCollectionSuper(Collection<? super E> dst) {
+    public void popAllSuper(Collection<? super E> dst) {
         while (!isEmpty())
             dst.add(pop());
     }
