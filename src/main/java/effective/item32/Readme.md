@@ -22,3 +22,48 @@
 
 ### 그렇다면, 메서드가 안전한지는 어떻게 확신할 수 있을까?
 
+#### 코드 32-2 자신의 제네릭 매개변수 배열의 참조를 노출한다. - 안전하지 않음
+이 메서드가 반환하는 배열 타입은 메서드에 인수를 넘기는 컴파일타임에 결정되는데, 그 시점에 컴파일러에게 충분한 정보가 주어지지 않아 타입을 잘못 판단할 수 있다. 따라서 varargs 매개변수 배열을 그대로 반환하면 힙 오염을 이 메서드를 호출한 쪽의 콜스택으로까지 전이하는 결과를 낳을 수 있다.
+```java
+static<T> T[] toArray(T.. args) {
+    return args
+}
+```
+
+#### 코드 32-3 제네릭 varargs 매개변수를 안전하게 사용하는 메서드
+```java
+@SafeVarargs
+static<T> List<T> flatten(List<? extends T>... lists) {
+    List<T> result = new ArrayList<>();
+    for (List<? extends T> list : lists)
+        result.addAll(list);
+    return result;
+}
+```
+
+### @SafeVarargs 애너테이션
+- 재정의 할 수 없는 메서드에만 선언한다. (재정의가 가능하면 안전을 보장할 수 없다.)
+- 자바 8 에서는 오직 static 메서드와 final 인스턴스에서만 사용할 수 있고. 자바 9 부터는 private 인스턴스 메서드에도 허용된다.
+
+### 코드 32-4 제네릭 varargs 매개변수를 List로 대체한 예 - 타입 안전하다.
+```java
+static<T> List<T> flatten(List<List<? extends T>> lists) {
+    List<T> result = new ArrayList<>();
+    for (List<? extends T> list : lists)
+        result.addAll(list);
+    return result;
+}
+```
+
+### 정리
+- 가변인수와 제네릭은 궁합이 좋지 않다. (가변인수 기능은 배열을 노출하여 추상화가 완벽하지 못하고, 배열과 제네릭의 타입 규칙이 서로 다르기 때문)
+- 메서드에 제네릭 varargs 매개변수를 사용하려거든, 그 메서드가 타입 안전한지 확인한 다음 `@SafeVarargs` 애너테이션을 달아 불편함이 없게끔 하자.
+
+
+
+
+
+
+
+
+
