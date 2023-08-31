@@ -1,8 +1,6 @@
 package effective.item33;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 // 코드 33-1
 class Favorites {
@@ -15,6 +13,11 @@ class Favorites {
         // 이는 모든 키가 서로 다른 매개변수화 타입일 수 있다는 뜻이다.
         favorites.put(Objects.requireNonNull(type), instance);
     } // 클래스의 리터럴 타입은 Class가 아니라 Class<T>이다.
+
+
+    public <T> void putFavoriteDynamic(Class<T> type, T instance){
+        favorites.put(Objects.requireNonNull(type), type.cast(instance));
+    }
 
     public <T> T getFavorite(Class<T> type){
         return type.cast(favorites.get(type));
@@ -29,6 +32,10 @@ public class Main {
         f.putFavorite(String.class, "JAVA");
         f.putFavorite(Integer.class, 0xcafebabe);
         f.putFavorite(Class.class, Favorites.class);
+
+        List list = new ArrayList<>();
+        f.putFavorite(List.class, list);
+        f.getFavorite(List.class);
 
         String favoriteString = f.getFavorite(String.class);
         int favoriteInteger = f.getFavorite(Integer.class);
