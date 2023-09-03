@@ -28,7 +28,6 @@ class Favorites {
 }
 
 public class Main {
-
     public static void main(String[] args) {
         Favorites f = new Favorites();
         f.putFavorite(String.class, "JAVA");
