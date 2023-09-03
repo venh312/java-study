@@ -1,12 +1,10 @@
 package effective.item33;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 // 코드 33-1
 class Favorites {
-    private Map<Class<?>, Object> favorites = new HashMap<>();
+    private final Map<Class<?>, Object> favorites = new HashMap<>();
 
     public <T> void putFavorite(Class<T> type, T instance){
         // favorites 가 비한정적 와일드카드 타입이라 이 맵 안에 아무것도 넣을수 없다고 생각되지만,
@@ -15,6 +13,12 @@ class Favorites {
         // 이는 모든 키가 서로 다른 매개변수화 타입일 수 있다는 뜻이다.
         favorites.put(Objects.requireNonNull(type), instance);
     } // 클래스의 리터럴 타입은 Class가 아니라 Class<T>이다.
+
+
+    // 동적 형변환으로 런타임 타입 안정성 확보 (로 타입으로 넘어오는 타입 안전성이 깨지는걸 방지한다.)
+    public <T> void putFavoriteDynamic(Class<T> type, T instance){
+        favorites.put(Objects.requireNonNull(type), type.cast(instance));
+    }
 
     public <T> T getFavorite(Class<T> type){
         return type.cast(favorites.get(type));
