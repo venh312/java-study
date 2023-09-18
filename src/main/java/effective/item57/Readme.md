@@ -11,7 +11,7 @@
 
 ### 지역변수의 범위를 최소화하는 반복문 관용구
 ```java
-for (int i = 0; n = expensiveComputation(); i < n; i++) {
+for (int i = 0, n = expensiveComputation(); i < n; i++) {
         ... // i로 무언가를 한다.    
 }
 ```
