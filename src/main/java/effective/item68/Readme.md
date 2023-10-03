@@ -42,7 +42,7 @@
 - T, U, V (그 외 임의 타입 시퀀스)
 
 ### 예시
-![img.png](img.png)
+<img width="626" alt="스크린샷 2023-10-03 오후 12 05 07" src="https://github.com/conf312/java-study/assets/13326651/4790fdd6-0c0d-46b2-a53e-941d87dc1954">
 
 ### 특별한 메서드 반환 타입
 - `toString, toArray 등` 객체의 타입을 바꿔서, 다른 타입의 또 다른 객체를 반환하는 `toType` 형태로 짓는다.
