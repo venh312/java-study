@@ -19,7 +19,26 @@
 - 순서성 (Ordering): volatile 변수를 사용하면 변수의 값을 읽고 쓰는 순서가 보장됩니다. 다시 말해, 하나의 스레드에서 변수를 수정한 후, 다른 스레드에서 그 값을 읽을 때 변수 변경 전에 다른 변수의 변경 사항이 반영되는 것을 보장합니다.
 
 ### volatile 의 문제점 - `VolatileProblem.java`
-- 가시성과 순서성을 보장하지만 원자성을 보장하지 않는다. 
+- 가시성과 순서성을 보장하지만 원자성을 보장하지 않는다.
 
+### atomic 패키지
+`java.util.concurrent.atomic` 패키지에는 락 없이도 `thread-safe` 한 클래스를 제공한다.
+
+`volatile` 은 동기화의 효과 중 통신 쪽만 지원하지만 이 패키지는 원자성(배타적 실행)까지 지원한다. 게다가 성능도 동기화 버전보다 우수하다.
+
+```java
+private static final AtomicLong nextSerialNum = new AtomicLong();
+
+public static long generateSerialNumber() {
+    return nextSerialNum.getAndIncrement();
+}
+```
+
+### 정리
+- 가변 데이터는 공유하지 않는것이 동기화 문제를 피하는 가장 좋은 방법 중 하나이다. 
+- 즉, 가변 데이터는 단일 스레드에서만 사용하자. 
+- 한 스레드가 데이터를 수정한 후에 다른 스레드에 공유할 때는 해당 객체에서 공유하는 부분만 동기화해도 된다. 
+- 다른 스레드에 이런 객체를 건네는 행위를 안전 발행(safe publication)이라고 한다. 
+- 클래스 초기화 과정에서 객체를 정적 필드, `volatile` 필드, `final` 필드 혹은 보통의 락을 통해 접근하는 필드 그리고 동시성 컬렉션에 저장하면 안전하게 발행할 수 있다. 
 
 
