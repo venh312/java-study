@@ -5,13 +5,13 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     private static boolean stopRequested;
 
-    private static synchronized void requestStop() {
-        stopRequested = true;
-    }
-
-    private static synchronized boolean stopRequested() {
-        return stopRequested;
-    }
+//    private static synchronized void requestStop() {
+//        stopRequested = true;
+//    }
+//
+//    private static synchronized boolean stopRequested() {
+//        return stopRequested;
+//    }
 
     /*
     이는 JVM 이 실제로 적용하는 끌어올리기(hoisting, 호이스팅)라는 최적화 기법이 사용된 것이다.
