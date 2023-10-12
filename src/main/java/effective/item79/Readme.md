@@ -18,6 +18,3 @@
 ### ConcurrentModification 
 동기화된 컬렉션에 대해서 `반복`문을 실행하는 도중에 컬렉션 클래스 내부의 값이 `변경`되는 상황이 포착되면 그 즉시 `ConcurrentModificationException` 이 발생하고 즉시 멈춤 `fail fast` 를 하는 것을 말한다.
 
-
-
-
