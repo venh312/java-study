@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObservableSet<E> extends ForwardingSet<E> {
     public ObservableSet(Set<E> s) {
@@ -11,6 +12,7 @@ public class ObservableSet<E> extends ForwardingSet<E> {
     }
 
     private final List<SetObserver<E>> observers = new ArrayList<>();
+    //private final List<SetObserver<E>> observers = new CopyOnWriteArrayList<>();
 
     public void addObserver(SetObserver<E> observer) {
         synchronized (observers) {
@@ -25,17 +27,17 @@ public class ObservableSet<E> extends ForwardingSet<E> {
     }
 
     private void notifyElementAdded(E element) {
-//        synchronized (observers) {
-//            for (SetObserver<E> observer : observers) {
-//                observer.added(this, element);
-//            }
-//        }
-        List<SetObserver<E>> snapshot = null;
+        synchronized (observers) {
+            for (SetObserver<E> observer : observers) {
+                observer.added(this, element);
+            }
+        }
+        /*List<SetObserver<E>> snapshot = null;
         synchronized(observers) {
             snapshot = new ArrayList<>(observers);
         }
         for (SetObserver<E> observer : snapshot)
-            observer.added(this, element);
+            observer.added(this, element);*/
     }
 
     @Override
