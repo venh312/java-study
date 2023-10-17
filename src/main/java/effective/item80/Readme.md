@@ -1,21 +1,21 @@
-## ITEM 80 - 스레드보다는 실행자, 태스트, 스트림을 애용하라.
+## ITEM 80 - 스레드보다는 실행자, 태스크, 스트림을 애용하라.
 
 ### 실행자 프레임워크 (Executor Framework)
-java.util.concurrent 패키지에 포함 되어 있으며, 유연한 태스크 실행 기능을 담고 있다.
+`java.util.concurrent` 패키지에 포함 되어 있으며, 유연한 태스크 실행 기능을 담고 있다.
 
 ### 작업 큐를 한 줄로 생성할 수 있게 되었다.
 ```java
 ExecutorService exec = Executors.newSingleThreadExecutor();
 
 // 실행자에 실행할 태스크(task; 작업)를 넘기는 방법
-exec.execute(runnable);;
+exec.execute(runnable);
 
 // 실행자를 종료시키는 방법
 exec.shutdown();
 ```
 
 ### 스레드와 실행자 프레임워크
-- 스레드를 직접 다루면 Thread가 작업 단위와 수행 메커니즘 역할을 수행해야 하는 반면, 실행자 프레임워크에서는 작업 단위와 실행 메커니즘이 분리된다.
+- 스레드를 직접 다루면 `Thread` 가 작업 단위와 수행 메커니즘 역할을 수행해야 하는 반면, 실행자 프레임워크에서는 작업 단위와 실행 메커니즘이 분리된다.
 - 작업 단위를 나타내는 핵심 추상 개념이 태스크이다.
 
 ### 포크-조인 (fork-join)
