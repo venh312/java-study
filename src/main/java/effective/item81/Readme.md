@@ -9,7 +9,6 @@
 - 동시성 컬렉션 (concurrent)
 - 동기화 장치 (synchronize)
 
-
 ### `wait`와 `notify`를 직접 사용하는 대신 `java.util.concurrent` 패키지의 concurrent 컬렉션의 이점
 
 1. **더 높은 수준의 추상화**: `java.util.concurrent` 패키지의 concurrent 컬렉션은 스레드 간 동기화를 단순화하고 추상화합니다. 이로써 스레드 간 동기화 관리가 더 쉽고 안전하게 이루어집니다.
