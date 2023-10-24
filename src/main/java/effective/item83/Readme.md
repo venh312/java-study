@@ -59,6 +59,9 @@ private FieldType getField() {
 }
 ```
 
+- @ManyToOne, @OneToOne과 같이 @XXXToOne 어노테이션들은 기본이 즉시 로딩(EAGER) 이다.
+- @OneToMany와 @ManyToMany는 기본이 지연 로딩(LAZY)이다.
+
 ### 정리
 - 대부분의 필드는 지연시키지 말고 바로 초기화해야 한다.
 - 성능 때문에 초기화 순환을 막기 위해 지연 초기화 해야 한다면 올바른 초기화 기법을 사용하자.
