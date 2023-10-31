@@ -27,24 +27,6 @@
 ### JMX(Java Management Extensions)
 자바 응용 프로그램 및 시스템의 모니터링 및 관리를 위한 표준 기술 및 API(응용 프로그래밍 인터페이스)입니다. `JMX`는 자바 플랫폼에서 애플리케이션 및 시스템을 모니터링하고 관리하기 위한 확장 가능하고 표준화된 방법을 제공합니다.
 
-```java
-static byte[] bomb() {
-    Set<Object> root = new HashSet<>();
-    Set<Object> s1 = root;
-    Set<Object> s2 = new HashSet<>();
-    for (int i = 0; i < 100; i++) {
-        Set<Object> t1 = new HashSet<>();
-        Set<Object> t2 = new HashSet<>();
-        t1.add("foo"); // t1을 t2와 다르게 만든다.
-        s1.add(t1);
-        s1.add(t2);
-        s1 = t1;
-        s2 = t2;
-    }
-    return serialize(root); // 간결하게 하기 위해 이 메서드의 코드는 생략함
-}
-```
-
 ### 정리
 - 직렬화는 위험하니 피해야한다.
 - JSON 이나 프로토콜 버퍼 같은 대안을 사용하자.
